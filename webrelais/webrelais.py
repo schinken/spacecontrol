@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 
 import argparse
 from relais_client import RelaisClient
@@ -9,9 +9,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Switch WebRelais')
 
-    parser.add_argument('--relais', dest='relais', type=int, required=True, choices=range(8), help='Relais you want to switch')
-    parser.add_argument('--on', dest='on', default=False, action='store_true', help='Switch on')
-    parser.add_argument('--off', dest='off', default=False, action='store_true', help='Switch off')
+    parser.add_argument('--relais', '-r', dest='relais', type=int, required=True, choices=range(8), help='Relais you want to switch')
+    parser.add_argument('--on',  '-on', dest='on', default=False, action='store_true', help='Switch on')
+    parser.add_argument('--off', '-off', dest='off', default=False, action='store_true', help='Switch off')
 
     args = parser.parse_args()
 
