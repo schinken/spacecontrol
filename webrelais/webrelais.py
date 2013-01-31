@@ -13,7 +13,9 @@ if __name__ == '__main__':
     mutex.add_argument('--on',  '-on', dest='mode', action='store_const', const=True, help='Switch on')
     mutex.add_argument('--off', '-off', dest='mode', action='store_const', const=False, help='Switch off')
 
-    parser.add_argument('relais', type=int, choices=range(8), help="Relais you want to switch")
+    mutex2 = parser.add_mutually_exclusive_group()
+    mutex2.add_argument('--relais', '-r', dest='relais', type=int, choices=range(8), help='Relais you want to switch')
+    mutex2.add_argument('relais', nargs='?', type=int, choices=range(8), help="Relais you want to switch")
 
     args = parser.parse_args()
 
