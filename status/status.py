@@ -20,4 +20,4 @@ if __name__ == '__main__':
         for entry in result['members_present']:
             nicknames.append(entry['nickname'])
 
-        print "Members:", ','.join(nicknames)
+        print "Members:", ', '.join(nicknames)
