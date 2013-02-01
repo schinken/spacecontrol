@@ -16,8 +16,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.text:
-        req = requests.get(ledapi_url+'/send_text', params={'message': ' '.join(args.text)})
-        if req.status_code == 200:
-            print "Thank you! Your message will be displayed"
+        message = ' '.join(args.text)
+        if len(message) > 256:
+            print "Text is too long"
         else:
-            print "Error posting message"
+            req = requests.post(ledapi_url+'/send_text', params={'message': message})
+            if req.status_code == 200:
+                print "Thank you! Your message will be displayed"
+            else:
+                print "Error posting message"
