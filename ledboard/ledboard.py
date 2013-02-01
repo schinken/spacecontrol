@@ -1,5 +1,6 @@
 #!/usr/bin/python2
 
+import sys
 import argparse
 import requests
 
@@ -15,7 +16,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.text:
-        req = requests.post(ledapi_url+'/send_text', data={'message': args.text})
+        req = requests.get(ledapi_url+'/send_text', params={'message': args.text})
         if req.status_code == 200:
             print "Thank you! Your message will be displayed"
         else:
