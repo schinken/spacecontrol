@@ -20,7 +20,7 @@ if __name__ == '__main__':
         if len(message) > 256:
             print "Text is too long"
         else:
-            req = requests.post(ledapi_url+'/send_text', params={'message': message})
+            req = requests.get(ledapi_url+'/send_text', params={'message': message})
             if req.status_code == 200:
                 print "Thank you! Your message will be displayed"
             else:
