@@ -1,0 +1,25 @@
+--- busybox-1.20.2.orig/shell/ash.c	2012-07-02 16:19:22.000000000 +0200
++++ busybox-1.20.2.new/shell/ash.c	2013-01-29 20:48:44.842322955 +0100
+@@ -8775,12 +8775,22 @@
+ 
+ 		if (!did_banner) {
+ 			/* note: ash and hush share this string */
++			/*
+ 			out1fmt("\n\n%s %s\n"
+ 				"Enter 'help' for a list of built-in commands."
+ 				"\n\n",
+ 				bb_banner,
+ 				"built-in shell (ash)"
+ 			);
++			*/
++			char bb_banner_new[5000];
++			FILE *fp;
++			fp = fopen("/etc/motd", "rb");
++			int x = fread(bb_banner_new, sizeof(char), 5000, fp);
++			bb_banner_new[x-1] = 0;
++			fclose(fp);
++
++                        out1fmt("%s", bb_banner_new);
+ 			did_banner = 1;
+ 		}
+ 	}
